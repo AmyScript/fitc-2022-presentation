@@ -52,23 +52,6 @@ const template = () => (
 );
 // SPECTACLE_CLI_TEMPLATE_END
 
-const SlideFragments = () => (
-  <>
-    <Slide>
-      <Text>This is a slide fragment.</Text>
-    </Slide>
-    <Slide>
-      <Text>This is also a slide fragment.</Text>
-      <Appear>
-        <Text>This item shows up!</Text>
-      </Appear>
-      <Appear>
-        <Text>This item also shows up!</Text>
-      </Appear>
-    </Slide>
-  </>
-);
-
 function App() {
   return (
 <Deck theme={theme} template={template}>
@@ -87,76 +70,33 @@ function App() {
     <Slide>
       <FlexBox height="100%" flexDirection="column">
         <Heading margin="0px" fontSize="150px">
-          ✨<i>Spectacle</i> ✨
+          ✨<i>Frontend end-to-end Testing</i> ✨
         </Heading>
         <Heading margin="0px" fontSize="h2">
-          A ReactJS Presentation Library
-        </Heading>
-        <Heading margin="0px 32px" color="primary" fontSize="h3">
-          Where you can write your decks in JSX, Markdown, or MDX!
+          RBC Digital
         </Heading>
       </FlexBox>
     </Slide>
-    <Slide
-      transition={{
-        from: {
-          transform: 'scale(0.5) rotate(45deg)',
-          opacity: 0
-        },
-        enter: {
-          transform: 'scale(1) rotate(0)',
-          opacity: 1
-        },
-        leave: {
-          transform: 'scale(0.2) rotate(315deg)',
-          opacity: 0
-        }
-      }}
-      backgroundColor="tertiary"
-      backgroundImage="url(https://github.com/FormidableLabs/dogs/blob/main/src/beau.jpg?raw=true)"
-      backgroundOpacity={0.5}
-    >
-      <Heading>Custom Backgrounds</Heading>
+    <Slide>
+      <Heading>What is frontend e2e testing?</Heading>
       <UnorderedList>
         <ListItem>
-          <CodeSpan>backgroundColor</CodeSpan>
-        </ListItem>
-        <ListItem>
-          <CodeSpan>backgroundImage</CodeSpan>
-        </ListItem>
-        <ListItem>
-          <CodeSpan>backgroundOpacity</CodeSpan>
-        </ListItem>
-        <ListItem>
-          <CodeSpan>backgroundSize</CodeSpan>
-        </ListItem>
-        <ListItem>
-          <CodeSpan>backgroundPosition</CodeSpan>
-        </ListItem>
-        <ListItem>
-          <CodeSpan>backgroundRepeat</CodeSpan>
+          <CodeSpan>Testing Pyramind</CodeSpan>
         </ListItem>
       </UnorderedList>
     </Slide>
     <Slide>
-      <Heading>Animated Elements</Heading>
+      <Heading>Who is using e2e testing in the tech world</Heading>
       <OrderedList>
         <Appear>
-          <ListItem>Elements can animate in!</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>Out of order</ListItem>
-        </Appear>
-        <Appear priority={0}>
-          <ListItem>
-            Just identify the order with the prop <CodeSpan>priority</CodeSpan>!
-          </ListItem>
+          <ListItem>Picture of companies</ListItem>
         </Appear>
       </OrderedList>
     </Slide>
     <Slide>
+      <Heading>Stats and different e2e testing frameworks:  https://2021.stateofjs.com/en-US/libraries/testing </Heading>
       <FlexBox>
-        <Text>These</Text>
+        <Text></Text>
         <Text>Text</Text>
         <Text color="secondary">Items</Text>
         <Text fontWeight="bold">Flex</Text>
@@ -183,8 +123,8 @@ function App() {
           ))}
       </Grid>
     </Slide>
-    <SlideFragments />
     <Slide>
+      <Heading>Why should you use frontend e2e testing (if no dedicated QE team)</Heading>
       <CodePane language="jsx">{`
         import { createClient, Provider } from 'urql';
         const client = createClient({ url: 'https://0ufyz.sse.codesandbox.io' });
@@ -203,11 +143,9 @@ function App() {
         }
         `}</CodePane>
     </Slide>
-    <div>
-      <Slide>
-        <Heading>This is a slide embedded in a div</Heading>
-      </Slide>
-    </div>
+    <Slide>
+      <Heading>How to integrate into development process and when to run tests</Heading>
+    </Slide>
     <MarkdownSlide componentProps={{ color: 'yellow' }}>
       {`
         # This is a Markdown Slide
@@ -225,6 +163,7 @@ function App() {
       `}
     </MarkdownSlide>
     <Slide>
+      <Heading>What kind of coverage for best practice</Heading>
       <Grid
         gridTemplateColumns="50% 50%"
         gridTemplateRows="50% 50%"
@@ -261,6 +200,34 @@ function App() {
       items={['Two-column', 'Lists', 'And more!']}
       animateListItems
     />
+    <Slide>
+      <Heading>Demo app</Heading>
+    </Slide>
+    <Slide>
+      <Heading>Cypress example</Heading>
+    </Slide>
+    <Slide>
+      <Heading>Add new feature and test fails</Heading>
+    </Slide>
+    <Slide>
+      <Heading>Example of how to write Cypress script</Heading>
+      <CodePane language="javascript" showLineNumbers={false}>{`
+        public class NoLineNumbers {
+          public static void main(String[] args) {
+            System.out.println("Hello");
+          }
+        }
+        `}</CodePane>
+    </Slide>
+    <Slide>
+      <Heading>Tips for flaky tests</Heading>
+    </Slide>
+    <Slide>
+      <Heading>Integration with pipeline Github Actions</Heading>
+    </Slide>
+    <Slide>
+      <Heading>Conclusions</Heading>
+    </Slide>
   </Deck>
   );
 }
