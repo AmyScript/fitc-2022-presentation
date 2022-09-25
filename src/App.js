@@ -2,7 +2,6 @@ import './App.css';
 import {
   FlexBox,
   Heading,
-  SpectacleLogo,
   UnorderedList,
   CodeSpan,
   OrderedList,
@@ -19,13 +18,10 @@ import {
   CodePane,
   MarkdownSlide,
   MarkdownSlideSet,
-  Notes,
   SlideLayout
 } from 'spectacle';
 
-
-const formidableLogo =
-  'https://avatars2.githubusercontent.com/u/5078602?s=280&v=4';
+import testPyramid from '../src/images/test-pyramid.png';
 
 // SPECTACLE_CLI_THEME_START
 const theme = {
@@ -56,23 +52,11 @@ function App() {
   return (
 <Deck theme={theme} template={template}>
     <Slide>
-      <FlexBox height="100%">
-        <SpectacleLogo size={500} />
-      </FlexBox>
-      <Notes>
-        Spectacle supports notes per slide.
-        <ol>
-          <li>Notes can now be HTML markup!</li>
-          <li>Lists can make it easier to make points.</li>
-        </ol>
-      </Notes>
-    </Slide>
-    <Slide>
       <FlexBox height="100%" flexDirection="column">
-        <Heading margin="0px" fontSize="150px">
-          ✨<i>Frontend end-to-end Testing</i> ✨
+        <Heading>
+          ✨<i>End To End Testing: <br />Less Bugs, Build Faster</i> ✨
         </Heading>
-        <Heading margin="0px" fontSize="h2">
+        <Heading margin="0px" fontSize="h3">
           RBC Digital
         </Heading>
       </FlexBox>
@@ -80,9 +64,36 @@ function App() {
     <Slide>
       <Heading>What is frontend e2e testing?</Heading>
       <UnorderedList>
-        <ListItem>
-          <CodeSpan>Testing Pyramind</CodeSpan>
-        </ListItem>
+        <Appear>
+          <ListItem>Methodology of testing your application's workflow from start to finish using real-life scenarios</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Ensure UI behaves as per requirement and test against actual back-end service</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Recommend only to test the high-value scenarios</ListItem>
+        </Appear>
+      </UnorderedList>
+    </Slide>
+    <Slide>
+      <FlexBox alignContent="center">
+        <Image src={testPyramid}></Image>
+      </FlexBox>
+      <FlexBox>
+      <p>Credit: <a href="https://martinfowler.com/articles/practical-test-pyramid.html#TheTestPyramid">Martin Fowler</a></p>
+      </FlexBox>
+    </Slide>
+    <Slide>
+      <UnorderedList>
+        <Appear>
+          <ListItem>Takes a long time and requires a lot of maintenance</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>The larger the application, more effort to required to make the tests work</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Recommend only to test the high-value scenarios</ListItem>
+        </Appear>
       </UnorderedList>
     </Slide>
     <Slide>
@@ -108,19 +119,6 @@ function App() {
         <Box backgroundColor="secondary">
           <Text>Double-size Grid Item</Text>
         </Box>
-      </Grid>
-      <Grid
-        gridTemplateColumns="1fr 1fr 1fr"
-        gridTemplateRows="1fr 1fr 1fr"
-        gridRowGap={1}
-      >
-        {Array(9)
-          .fill('')
-          .map((_, index) => (
-            <FlexBox paddingTop={0} key={`formidable-logo-${index}`} flex={1}>
-              <Image src={formidableLogo} width={100} />
-            </FlexBox>
-          ))}
       </Grid>
     </Slide>
     <Slide>
