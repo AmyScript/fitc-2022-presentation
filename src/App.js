@@ -53,7 +53,7 @@ function App() {
 <Deck theme={theme} template={template}>
     <Slide>
       <FlexBox height="100%" flexDirection="column">
-        <Heading>
+        <Heading data-cy="title">
           ✨<i>End To End Testing: <br />Less Bugs, Build Faster</i> ✨
         </Heading>
         <Heading margin="0px" fontSize="h3">

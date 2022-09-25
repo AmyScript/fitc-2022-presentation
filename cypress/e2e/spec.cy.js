@@ -1,8 +1,8 @@
-describe('fitc presentation', () => {
+describe('Presentation Title', () => {
   before(() => {
     cy.visit('http://localhost:3000/?slideIndex=0&stepIndex=0');
   });
   it('has the correct title', () => {
-    cy.get('[data-cy="title"]').contains("FITC presentation");
+    cy.get('[data-cy="title"]').contains("End To End Testing");
   })
 })
