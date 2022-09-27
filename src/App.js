@@ -15,6 +15,7 @@ import {
   Grid,
   Box,
   Image,
+  Notes,
   CodePane,
   MarkdownSlide,
   MarkdownSlideSet,
@@ -22,6 +23,7 @@ import {
 } from 'spectacle';
 
 import testPyramid from '../src/images/test-pyramid.png';
+import JSTestingUsage from '../src/images/JSTestingUsage.png';
 
 // SPECTACLE_CLI_THEME_START
 const theme = {
@@ -120,6 +122,23 @@ function App() {
           <Text>Double-size Grid Item</Text>
         </Box>
       </Grid>
+    </Slide>
+    <Slide>
+      <Heading>Usage of JS Testing Frameworks and Libraries Survey</Heading>
+      <FlexBox flexDirection="column" alignContent="center">
+        <Text>Based on 16,085 responses</Text>
+        <Text>Credit: <a href="https://2021.stateofjs.com/en-US/libraries/testing">State of JS Survey - Sacha Greif</a></Text>
+      </FlexBox>
+    </Slide>
+    <Slide>
+      <FlexBox flexDirection="row" width="100%"  alignContent="center">
+        <Image width="70%" src={JSTestingUsage}></Image>
+      </FlexBox>
+      <Notes>
+        Any JS testing framework that has less than 10% awareness from the survey respondents were not included here.
+        Usage of JS e2e testing frameworks mostly started out in 2019 with the usage of Puppeteer and Cypress and continues to gain usage in the following years.
+        With more usage of other testing libraries such as Webdriver IO and Playwright.
+      </Notes>
     </Slide>
     <Slide>
       <Heading>Why should you use frontend e2e testing (if no dedicated QE team)</Heading>
