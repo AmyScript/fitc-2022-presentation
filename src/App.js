@@ -107,21 +107,27 @@ function App() {
       </OrderedList>
     </Slide>
     <Slide>
-      <Heading>Stats and different e2e testing frameworks:  https://2021.stateofjs.com/en-US/libraries/testing </Heading>
-      <FlexBox>
-        <Text></Text>
-        <Text>Text</Text>
-        <Text color="secondary">Items</Text>
-        <Text fontWeight="bold">Flex</Text>
-      </FlexBox>
-      <Grid gridTemplateColumns="1fr 2fr" gridColumnGap={15}>
-        <Box backgroundColor="primary">
-          <Text color="secondary">Single-size Grid Item</Text>
-        </Box>
-        <Box backgroundColor="secondary">
-          <Text>Double-size Grid Item</Text>
-        </Box>
-      </Grid>
+      <Heading>Why e2e testing?</Heading>
+      <UnorderedList>
+        <Appear>
+          <ListItem>Prevent bugs and regression 🐛</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Confidence with continuous integration ✅</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Increase developer velocity 📈</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Cover gaps that unit and integration tests can't cover</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Improve customer experience</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Audit record for critical flows 🔍</ListItem>
+        </Appear>
+    </UnorderedList>
     </Slide>
     <Slide>
       <Heading>Usage of JS Testing Frameworks and Libraries Survey</Heading>
@@ -129,6 +135,13 @@ function App() {
         <Text>Based on 16,085 responses</Text>
         <Text>Credit: <a href="https://2021.stateofjs.com/en-US/libraries/testing">State of JS Survey - Sacha Greif</a></Text>
       </FlexBox>
+      <Notes>
+        There are different e2e testing frameworks and libraries out there.  A really popular one amongst the software
+        testing community is Selenium Webdriver as you can write the tests in different languages like Java, Python, C# and even JS but I'm
+        going to focus on the increasingly popular ones for doing e2e tests in JS in modern web applications in the frontend community.
+        I'm going to show everyone the 2021 survey results on the usage of JS testing frameworks and libraries conducted
+        by the site State of JS.
+      </Notes>
     </Slide>
     <Slide>
       <FlexBox flexDirection="row" width="100%"  alignContent="center">
@@ -136,8 +149,10 @@ function App() {
       </FlexBox>
       <Notes>
         Any JS testing framework that has less than 10% awareness from the survey respondents were not included here.
+        Usage of JS e2e testing has been steadly increasing since 2019.
         Usage of JS e2e testing frameworks mostly started out in 2019 with the usage of Puppeteer and Cypress and continues to gain usage in the following years.
         With more usage of other testing libraries such as Webdriver IO and Playwright.
+        There are other e2e testing frameworks and libraries such as Selenium, TestCafe, Protractor etc. that didn't make it on this chart
       </Notes>
     </Slide>
     <Slide>
