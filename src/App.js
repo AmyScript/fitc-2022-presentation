@@ -16,7 +16,6 @@ import {
   Box,
   Image,
   CodePane,
-  MarkdownSlide,
   MarkdownSlideSet,
   SlideLayout
 } from 'spectacle';
@@ -24,7 +23,11 @@ import {
 import testPyramid from '../src/images/test-pyramid.png';
 
 // SPECTACLE_CLI_THEME_START
-const theme = {
+const theme = {  
+  colors: {
+    primary: '#fff',
+    secondary: '#f9c300'
+  },
   fonts: {
     header: '"Open Sans Condensed", Helvetica, Arial, sans-serif',
     text: '"Open Sans Condensed", Helvetica, Arial, sans-serif'
@@ -51,7 +54,7 @@ const template = () => (
 function App() {
   return (
 <Deck theme={theme} template={template}>
-    <Slide>
+    <Slide backgroundImage="url(https://github.com/FormidableLabs/dogs/blob/main/src/beau.jpg?raw=true)">
       <FlexBox height="100%" flexDirection="column">
         <Heading data-cy="title">
           ✨<i>End To End Testing: <br />Less Bugs, Build Faster</i> ✨
@@ -143,23 +146,18 @@ function App() {
     </Slide>
     <Slide>
       <Heading>How to integrate into development process and when to run tests</Heading>
+      <UnorderedList>
+        <Appear>
+          <ListItem>Typically unit and integration tests are executed during push pre-hooks and feature Pull Requests</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>End-to-end testing are executed on regular basis, but not recommended during feature developement</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>An ideal time to run end-to-end testing is during building a release version in your CI/CD pipeline</ListItem>
+        </Appear>
+      </UnorderedList>
     </Slide>
-    <MarkdownSlide componentProps={{ color: 'yellow' }}>
-      {`
-        # This is a Markdown Slide
-        - You can pass props down to all elements on the slide.
-        - Just use the \`componentProps\` prop.
-        `}
-    </MarkdownSlide>
-    <MarkdownSlide animateListItems>
-      {`
-       # This is also a Markdown Slide
-       It uses the \`animateListItems\` prop.
-       - Its list items...
-       - ...will appear...
-       - ...one at a time.
-      `}
-    </MarkdownSlide>
     <Slide>
       <Heading>What kind of coverage for best practice</Heading>
       <Grid
@@ -209,12 +207,17 @@ function App() {
     </Slide>
     <Slide>
       <Heading>Example of how to write Cypress script</Heading>
+      <p>Very similar to writing other test scripts.</p>
+      <p>You have can setup condition prior to running each test condition (before each)</p>
+      <p>Uses the `cy` object to perform actions and to test assertion</p>
       <CodePane language="javascript" showLineNumbers={false}>{`
-        public class NoLineNumbers {
-          public static void main(String[] args) {
-            System.out.println("Hello");
-          }
-        }
+        before(() => {
+          cy.visit('http://localhost:3000/?slideIndex=0&stepIndex=0');
+        });
+
+        it('has the correct title', () => {
+          cy.get('[data-cy="title"]').contains("End To End Testing");
+        });
         `}</CodePane>
     </Slide>
     <Slide>
