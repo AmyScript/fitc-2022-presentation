@@ -22,6 +22,11 @@ import {
 
 import testPyramid from '../src/images/test-pyramid.png';
 
+const images = {
+  backgroundImg: 'url(https://raw.githubusercontent.com/vincent-ksk/fitc/master/background.jpeg)'
+};
+
+console.log(images.backgroundImg);
 // SPECTACLE_CLI_THEME_START
 const theme = {  
   colors: {
@@ -54,7 +59,7 @@ const template = () => (
 function App() {
   return (
 <Deck theme={theme} template={template}>
-    <Slide backgroundImage="url(https://github.com/FormidableLabs/dogs/blob/main/src/beau.jpg?raw=true)">
+    <Slide backgroundImage={images.backgroundImg}>
       <FlexBox height="100%" flexDirection="column">
         <Heading data-cy="title">
           ✨<i>End To End Testing: <br />Less Bugs, Build Faster</i> ✨
@@ -154,7 +159,7 @@ function App() {
           <ListItem>End-to-end testing are executed on regular basis, but not recommended during feature developement</ListItem>
         </Appear>
         <Appear>
-          <ListItem>An ideal time to run end-to-end testing is during building a release version in your CI/CD pipeline</ListItem>
+          <ListItem>An ideal time to run end-to-end testing is during a Pull Request into the main branch or building a release version in your CI/CD pipeline</ListItem>
         </Appear>
       </UnorderedList>
     </Slide>
