@@ -23,7 +23,8 @@ import {
 } from 'spectacle';
 
 import testPyramid from '../src/images/test-pyramid.png';
-import JSTestingUsage from '../src/images/JSTestingUsage.png';
+import jsTestingUsage from '../src/images/JSTestingUsage.png';
+import brokenCode from '../src/images/broken_code.jpg';
 
 // SPECTACLE_CLI_THEME_START
 const theme = {
@@ -145,7 +146,7 @@ function App() {
     </Slide>
     <Slide>
       <FlexBox flexDirection="row" width="100%"  alignContent="center">
-        <Image width="70%" src={JSTestingUsage}></Image>
+        <Image width="70%" src={jsTestingUsage}></Image>
       </FlexBox>
       <Notes>
         Any JS testing framework that has less than 10% awareness from the survey respondents were not included here.
@@ -252,7 +253,90 @@ function App() {
         `}</CodePane>
     </Slide>
     <Slide>
+      <Heading>Flaky Tests</Heading>
+      <Grid
+        gridTemplateColumns="50% 50%"
+        height="100%"
+      >
+      <FlexBox alignItems="top" justifyContent="center">
+        <Image width="70%" height="90%" src={brokenCode}></Image>
+      </FlexBox>
+      <FlexBox alignItems="top" justifyContent="center">
+      <UnorderedList>
+        <Appear>
+          <ListItem>Or is it just a flaky test?</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Usually happens in CI when the tests are ran many times</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Cause by unpredicatble factors such as network lag, processor speed, memory bottlenecks in containers</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Test runner runs so fast it gets ahead of the application</ListItem>
+        </Appear>
+      </UnorderedList>
+      </FlexBox>
+      </Grid>
+      <Notes>
+        Test runners like Cypress performs the user actions extremely quickly and sometimes the DOM isn't ready yet.
+        For example, the test maybe selecting an item in a dropdown box but the application needs to calculate the
+        dropdown items depending on conditions and a slowdown in the calculations causes the select item not to render yet
+        but the test is already trying to find and click on that element. Remember things happen on the DOM asynchronously in milli-seconds
+        even though it may appear to be instant to the human eye
+      </Notes>
+    </Slide>
+    <Slide>
       <Heading>Tips for flaky tests</Heading>
+      <UnorderedList>
+        <Appear>
+          <ListItem>Only make assertion on text if it is crucial to your application</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Look for if the element exists before performing action on it in your test</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Make sure the DOM element is rendered and not in transition</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>When navigating between pages in the test, ensure the navigation is done and the page is loaded completely before making assertions</ListItem>
+        </Appear>
+    </UnorderedList>
+    <Notes>
+      Make sure the DOM element is rendered and not in transition: <br/>
+      Sometimes a DOM elements gets attached and unattached and reattached to the DOM.  For example, submitting a from
+      that refreshes a page.  Make sure you are not trying to make an assertion on an unattached DOM element.
+    </Notes>
+    </Slide>
+    <Slide>
+    <Heading>Tips for flaky tests</Heading>
+      <UnorderedList>
+        <Appear>
+          <ListItem>Make sure the application has the network response if the network response affects the rendering of the element</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Utilitze wait time(not recommended)</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Utilitze retry commands and intercept network requests to make sure the response is sucessful </ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Cypress test retries - <a>https://docs.cypress.io/guides/core-concepts/retry-ability</a> </ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Share and document learnings to share with the team to avoid similar flake in the future</ListItem>
+        </Appear>
+    </UnorderedList>
+    <Notes>
+        Most test runners will allow you to use a wait command to wait a certain number of seconds before making
+        assertions. However, this is not recommended because you may not know how long a page takes to load or how long
+        a calculation will take and may add unnecessary waiting time or not have enough waiting time depending on the machine
+        where your tests are ran. <br />
+        Look for a test runner that can auto rety certain commands.  For example, with Cypress, the .get() command is automatially
+        retried for x number of seconds, default to 4 seconds.  You can also use a call back function with the .should() command
+        where assertions within the callback is retried over and over again until it passes.  This is good for making
+        assertions on dynamically generated DOM elements.
+    </Notes>
     </Slide>
     <Slide>
       <Heading>Integration with pipeline Github Actions</Heading>
