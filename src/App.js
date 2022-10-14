@@ -15,12 +15,15 @@ import {
   Grid,
   Box,
   Image,
+  Notes,
   CodePane,
   MarkdownSlideSet,
   SlideLayout
 } from 'spectacle';
 
 import testPyramid from '../src/images/test-pyramid.png';
+import jsTestingUsage from '../src/images/JSTestingUsage.png';
+import brokenCode from '../src/images/broken_code.jpg';
 
 // SPECTACLE_CLI_THEME_START
 const theme = {  
@@ -108,21 +111,53 @@ function App() {
       </OrderedList>
     </Slide>
     <Slide>
-      <Heading>Stats and different e2e testing frameworks:  https://2021.stateofjs.com/en-US/libraries/testing </Heading>
-      <FlexBox>
-        <Text></Text>
-        <Text>Text</Text>
-        <Text color="secondary">Items</Text>
-        <Text fontWeight="bold">Flex</Text>
+      <Heading>Why e2e testing?</Heading>
+      <UnorderedList>
+        <Appear>
+          <ListItem>Prevent bugs and regression 🐛</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Confidence with continuous integration ✅</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Increase developer velocity 📈</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Cover gaps that unit and integration tests can't cover</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Improve customer experience</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Audit record for critical flows 🔍</ListItem>
+        </Appear>
+    </UnorderedList>
+    </Slide>
+    <Slide>
+      <Heading>Usage of JS Testing Frameworks and Libraries Survey</Heading>
+      <FlexBox flexDirection="column" alignContent="center">
+        <Text>Based on 16,085 responses</Text>
+        <Text>Credit: <a href="https://2021.stateofjs.com/en-US/libraries/testing">State of JS Survey - Sacha Greif</a></Text>
       </FlexBox>
-      <Grid gridTemplateColumns="1fr 2fr" gridColumnGap={15}>
-        <Box backgroundColor="primary">
-          <Text color="secondary">Single-size Grid Item</Text>
-        </Box>
-        <Box backgroundColor="secondary">
-          <Text>Double-size Grid Item</Text>
-        </Box>
-      </Grid>
+      <Notes>
+        There are different e2e testing frameworks and libraries out there.  A really popular one amongst the software
+        testing community is Selenium Webdriver as you can write the tests in different languages like Java, Python, C# and even JS but I'm
+        going to focus on the increasingly popular ones for doing e2e tests in JS in modern web applications in the frontend community.
+        I'm going to show everyone the 2021 survey results on the usage of JS testing frameworks and libraries conducted
+        by the site State of JS.
+      </Notes>
+    </Slide>
+    <Slide>
+      <FlexBox flexDirection="row" width="100%"  alignContent="center">
+        <Image width="70%" src={jsTestingUsage}></Image>
+      </FlexBox>
+      <Notes>
+        Any JS testing framework that has less than 10% awareness from the survey respondents were not included here.
+        Usage of JS e2e testing has been steadly increasing since 2019.
+        Usage of JS e2e testing frameworks mostly started out in 2019 with the usage of Puppeteer and Cypress and continues to gain usage in the following years.
+        With more usage of other testing libraries such as Webdriver IO and Playwright.
+        There are other e2e testing frameworks and libraries such as Selenium, TestCafe, Protractor etc. that didn't make it on this chart
+      </Notes>
     </Slide>
     <Slide>
       <Heading>Why should you use frontend e2e testing (if no dedicated QE team)</Heading>
@@ -221,7 +256,90 @@ function App() {
         `}</CodePane>
     </Slide>
     <Slide>
+      <Heading>Flaky Tests</Heading>
+      <Grid
+        gridTemplateColumns="50% 50%"
+        height="100%"
+      >
+      <FlexBox alignItems="top" justifyContent="center">
+        <Image width="70%" height="90%" src={brokenCode}></Image>
+      </FlexBox>
+      <FlexBox alignItems="top" justifyContent="center">
+      <UnorderedList>
+        <Appear>
+          <ListItem>Or is it just a flaky test?</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Usually happens in CI when the tests are ran many times</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Cause by unpredicatble factors such as network lag, processor speed, memory bottlenecks in containers</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Test runner runs so fast it gets ahead of the application</ListItem>
+        </Appear>
+      </UnorderedList>
+      </FlexBox>
+      </Grid>
+      <Notes>
+        Test runners like Cypress performs the user actions extremely quickly and sometimes the DOM isn't ready yet.
+        For example, the test maybe selecting an item in a dropdown box but the application needs to calculate the
+        dropdown items depending on conditions and a slowdown in the calculations causes the select item not to render yet
+        but the test is already trying to find and click on that element. Remember things happen on the DOM asynchronously in milli-seconds
+        even though it may appear to be instant to the human eye
+      </Notes>
+    </Slide>
+    <Slide>
       <Heading>Tips for flaky tests</Heading>
+      <UnorderedList>
+        <Appear>
+          <ListItem>Only make assertion on text if it is crucial to your application</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Look for if the element exists before performing action on it in your test</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Make sure the DOM element is rendered and not in transition</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>When navigating between pages in the test, ensure the navigation is done and the page is loaded completely before making assertions</ListItem>
+        </Appear>
+    </UnorderedList>
+    <Notes>
+      Make sure the DOM element is rendered and not in transition: <br/>
+      Sometimes a DOM elements gets attached and unattached and reattached to the DOM.  For example, submitting a from
+      that refreshes a page.  Make sure you are not trying to make an assertion on an unattached DOM element.
+    </Notes>
+    </Slide>
+    <Slide>
+    <Heading>Tips for flaky tests</Heading>
+      <UnorderedList>
+        <Appear>
+          <ListItem>Make sure the application has the network response if the network response affects the rendering of the element</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Utilitze wait time(not recommended)</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Utilitze retry commands and intercept network requests to make sure the response is sucessful </ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Cypress test retries - <a>https://docs.cypress.io/guides/core-concepts/retry-ability</a> </ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Share and document learnings to share with the team to avoid similar flake in the future</ListItem>
+        </Appear>
+    </UnorderedList>
+    <Notes>
+        Most test runners will allow you to use a wait command to wait a certain number of seconds before making
+        assertions. However, this is not recommended because you may not know how long a page takes to load or how long
+        a calculation will take and may add unnecessary waiting time or not have enough waiting time depending on the machine
+        where your tests are ran. <br />
+        Look for a test runner that can auto rety certain commands.  For example, with Cypress, the .get() command is automatially
+        retried for x number of seconds, default to 4 seconds.  You can also use a call back function with the .should() command
+        where assertions within the callback is retried over and over again until it passes.  This is good for making
+        assertions on dynamically generated DOM elements.
+    </Notes>
     </Slide>
     <Slide>
       <Heading>Integration with pipeline Github Actions</Heading>
