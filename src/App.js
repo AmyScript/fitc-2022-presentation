@@ -3,7 +3,6 @@ import {
   FlexBox,
   Heading,
   UnorderedList,
-  CodeSpan,
   OrderedList,
   ListItem,
   FullScreen,
@@ -12,21 +11,23 @@ import {
   Slide,
   Deck,
   Text,
-  Grid,
   Box,
   Image,
   Notes,
   CodePane,
-  MarkdownSlideSet,
-  SlideLayout
 } from 'spectacle';
 
 import testPyramid from '../src/images/test-pyramid.png';
 import jsTestingUsage from '../src/images/JSTestingUsage.png';
-import brokenCode from '../src/images/broken_code.jpg';
+import { TipsFlakyTests } from './slides/TipsFlakyTests';
+import React from 'react';
+import { TipsFlakyTestsContinued } from './slides/TipsFlakyTestsContinued';
+import { FlakyTests } from './slides/FlakyTests';
+import { Conclusions } from './slides/Conclusions';
+import { ExampleTemplateSlides } from './slides/ExampleTemplateSlides';
 
 // SPECTACLE_CLI_THEME_START
-const theme = {  
+const theme = {
   colors: {
     primary: '#fff',
     secondary: '#f9c300'
@@ -195,42 +196,7 @@ function App() {
     </Slide>
     <Slide>
       <Heading>What kind of coverage for best practice</Heading>
-      <Grid
-        gridTemplateColumns="50% 50%"
-        gridTemplateRows="50% 50%"
-        height="100%"
-      >
-        <FlexBox alignItems="center" justifyContent="center">
-          <Heading>This is a 4x4 Grid</Heading>
-        </FlexBox>
-        <FlexBox alignItems="center" justifyContent="center">
-          <Text textAlign="center">
-            With all the content aligned and justified center.
-          </Text>
-        </FlexBox>
-        <FlexBox alignItems="center" justifyContent="center">
-          <Text textAlign="center">
-            It uses Spectacle <CodeSpan>{'<Grid />'}</CodeSpan> and{' '}
-            <CodeSpan>{'<FlexBox />'}</CodeSpan> components.
-          </Text>
-        </FlexBox>
-        <FlexBox alignItems="center" justifyContent="center">
-          <Box width={200} height={200} backgroundColor="secondary" />
-        </FlexBox>
-      </Grid>
     </Slide>
-    <MarkdownSlideSet>
-      {`
-        # This is the first slide of a Markdown Slide Set
-        ---
-        # This is the second slide of a Markdown Slide Set
-        `}
-    </MarkdownSlideSet>
-    <SlideLayout.List
-      title="Slide layouts!"
-      items={['Two-column', 'Lists', 'And more!']}
-      animateListItems
-    />
     <Slide>
       <Heading>Demo app</Heading>
     </Slide>
@@ -241,11 +207,11 @@ function App() {
       <Heading>Add new feature and test fails</Heading>
     </Slide>
     <Slide>
-      <Heading>Example of how to write Cypress script</Heading>
-      <p>Very similar to writing other test scripts.</p>
-      <p>You have can setup condition prior to running each test condition (before each)</p>
-      <p>Uses the `cy` object to perform actions and to test assertion</p>
-      <CodePane language="javascript" showLineNumbers={false}>{`
+        <Heading>Example of how to write Cypress script</Heading>
+        <p>Very similar to writing other test scripts.</p>
+        <p>You have can setup condition prior to running each test condition (before each)</p>
+        <p>Uses the `cy` object to perform actions and to test assertion</p>
+        <CodePane language="javascript" showLineNumbers={false}>{`
         before(() => {
           cy.visit('http://localhost:3000/?slideIndex=0&stepIndex=0');
         });
@@ -253,100 +219,17 @@ function App() {
         it('has the correct title', () => {
           cy.get('[data-cy="title"]').contains("End To End Testing");
         });
-        `}</CodePane>
+        `}
+        </CodePane>
     </Slide>
-    <Slide>
-      <Heading>Flaky Tests</Heading>
-      <Grid
-        gridTemplateColumns="50% 50%"
-        height="100%"
-      >
-      <FlexBox alignItems="top" justifyContent="center">
-        <Image width="70%" height="90%" src={brokenCode}></Image>
-      </FlexBox>
-      <FlexBox alignItems="top" justifyContent="center">
-      <UnorderedList>
-        <Appear>
-          <ListItem>Or is it just a flaky test?</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>Usually happens in CI when the tests are ran many times</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>Cause by unpredicatble factors such as network lag, processor speed, memory bottlenecks in containers</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>Test runner runs so fast it gets ahead of the application</ListItem>
-        </Appear>
-      </UnorderedList>
-      </FlexBox>
-      </Grid>
-      <Notes>
-        Test runners like Cypress performs the user actions extremely quickly and sometimes the DOM isn't ready yet.
-        For example, the test maybe selecting an item in a dropdown box but the application needs to calculate the
-        dropdown items depending on conditions and a slowdown in the calculations causes the select item not to render yet
-        but the test is already trying to find and click on that element. Remember things happen on the DOM asynchronously in milli-seconds
-        even though it may appear to be instant to the human eye
-      </Notes>
-    </Slide>
-    <Slide>
-      <Heading>Tips for flaky tests</Heading>
-      <UnorderedList>
-        <Appear>
-          <ListItem>Only make assertion on text if it is crucial to your application</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>Look for if the element exists before performing action on it in your test</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>Make sure the DOM element is rendered and not in transition</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>When navigating between pages in the test, ensure the navigation is done and the page is loaded completely before making assertions</ListItem>
-        </Appear>
-    </UnorderedList>
-    <Notes>
-      Make sure the DOM element is rendered and not in transition: <br/>
-      Sometimes a DOM elements gets attached and unattached and reattached to the DOM.  For example, submitting a from
-      that refreshes a page.  Make sure you are not trying to make an assertion on an unattached DOM element.
-    </Notes>
-    </Slide>
-    <Slide>
-    <Heading>Tips for flaky tests</Heading>
-      <UnorderedList>
-        <Appear>
-          <ListItem>Make sure the application has the network response if the network response affects the rendering of the element</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>Utilitze wait time(not recommended)</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>Utilitze retry commands and intercept network requests to make sure the response is sucessful </ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>Cypress test retries - <a>https://docs.cypress.io/guides/core-concepts/retry-ability</a> </ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>Share and document learnings to share with the team to avoid similar flake in the future</ListItem>
-        </Appear>
-    </UnorderedList>
-    <Notes>
-        Most test runners will allow you to use a wait command to wait a certain number of seconds before making
-        assertions. However, this is not recommended because you may not know how long a page takes to load or how long
-        a calculation will take and may add unnecessary waiting time or not have enough waiting time depending on the machine
-        where your tests are ran. <br />
-        Look for a test runner that can auto rety certain commands.  For example, with Cypress, the .get() command is automatially
-        retried for x number of seconds, default to 4 seconds.  You can also use a call back function with the .should() command
-        where assertions within the callback is retried over and over again until it passes.  This is good for making
-        assertions on dynamically generated DOM elements.
-    </Notes>
-    </Slide>
+    <FlakyTests />
+    <TipsFlakyTests />
+    <TipsFlakyTestsContinued />
     <Slide>
       <Heading>Integration with pipeline Github Actions</Heading>
     </Slide>
-    <Slide>
-      <Heading>Conclusions</Heading>
-    </Slide>
+    <Conclusions />
+    <ExampleTemplateSlides />
   </Deck>
   );
 }
