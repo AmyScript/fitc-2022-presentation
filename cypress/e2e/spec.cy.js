@@ -9,4 +9,9 @@ describe('Presentation Title', () => {
     cy.get('body').type('{rightArrow}');
     cy.url().should('contain', 'slideIndex=1&stepIndex=0');
   })
+  it('when the SHOW MILO button is clicked, an image is shown', () => {
+    cy.visit('http://localhost:3000/?slideIndex=11&stepIndex=0');
+    cy.get('[data-cy="get-image-button"]').click();
+    cy.get('[data-cy="milo-image"]').should('be.visible');
+  })
 })
