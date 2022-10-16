@@ -17,7 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cy:run": "cypress run",
+    "cy:run": "cypress run --browser chrome",
     "cy:test": "start-server-and-test start http://localhost:3000 cy:run"
   },
   "eslintConfig": {

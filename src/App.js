@@ -25,6 +25,7 @@ import { TipsFlakyTestsContinued } from './slides/TipsFlakyTestsContinued';
 import { FlakyTests } from './slides/FlakyTests';
 import { Conclusions } from './slides/Conclusions';
 import { ExampleTemplateSlides } from './slides/ExampleTemplateSlides';
+import { Demo } from './slides/Demo';
 
 // SPECTACLE_CLI_THEME_START
 const theme = {
@@ -197,9 +198,7 @@ function App() {
     <Slide>
       <Heading>What kind of coverage for best practice</Heading>
     </Slide>
-    <Slide>
-      <Heading>Demo app</Heading>
-    </Slide>
+    <Demo />
     <Slide>
       <Heading>Cypress example</Heading>
     </Slide>
