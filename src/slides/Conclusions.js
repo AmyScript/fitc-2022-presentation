@@ -16,7 +16,7 @@ import {
         </Slide>
         <Slide>
             <FlexBox flexDirection="column" height="100%" justifyContent="center" alignItems="center">
-                <Heading>THANK YOU</Heading>
+                <Heading data-cy="conclusion">THANK YOU</Heading>
                 <Text>Amy Wah - amy.wah@rbc.com</Text>
                 <Text>Vincent Kong - vincent.kong@rbc.com</Text>
             </FlexBox>
