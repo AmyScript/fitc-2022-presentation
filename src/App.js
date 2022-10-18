@@ -3,7 +3,6 @@ import {
   FlexBox,
   Heading,
   UnorderedList,
-  OrderedList,
   ListItem,
   FullScreen,
   AnimatedProgress,
@@ -19,19 +18,29 @@ import {
 
 import testPyramid from '../src/images/test-pyramid.png';
 import jsTestingUsage from '../src/images/JSTestingUsage.png';
+import companies from '../src/images/companies-01.png';
 import { TipsFlakyTests } from './slides/TipsFlakyTests';
 import React from 'react';
 import { TipsFlakyTestsContinued } from './slides/TipsFlakyTestsContinued';
 import { FlakyTests } from './slides/FlakyTests';
 import { Conclusions } from './slides/Conclusions';
-import { ExampleTemplateSlides } from './slides/ExampleTemplateSlides';
-import { Demo } from './slides/Demo';
 
+const images = {
+  backgroundImg: 'url(https://raw.githubusercontent.com/vincent-ksk/fitc/master/background.jpeg)',
+  backgroundImg2: 'url(https://raw.githubusercontent.com/vincent-ksk/fitc/master/background-2.png)',
+  backgroundImg3: 'url(https://raw.githubusercontent.com/vincent-ksk/fitc/master/background-3.png)',
+  backgroundImg4: 'url(https://raw.githubusercontent.com/vincent-ksk/fitc/master/background-4.png)',
+  backgroundImg5: 'url(https://raw.githubusercontent.com/vincent-ksk/fitc/master/background-5.png)',
+  backgroundImg6: 'url(https://raw.githubusercontent.com/vincent-ksk/fitc/master/background-6.png)'
+};
+
+console.log(images.backgroundImg);
 // SPECTACLE_CLI_THEME_START
 const theme = {
   colors: {
     primary: '#fff',
-    secondary: '#f9c300'
+    blue: '#00569B',
+    yellow: '#f9c300'
   },
   fonts: {
     header: '"Open Sans Condensed", Helvetica, Arial, sans-serif',
@@ -59,15 +68,16 @@ const template = () => (
 function App() {
   return (
 <Deck theme={theme} template={template}>
-    <Slide backgroundImage="url(https://github.com/FormidableLabs/dogs/blob/main/src/beau.jpg?raw=true)">
-      <FlexBox height="100%" flexDirection="column">
-        <Heading data-cy="title">
+    <Slide 
+      backgroundImage={images.backgroundImg2}       
+      backgroundSize="contain"
+      backgroundPosition="center center">
+        <Heading margin="100px 0 0 0" color={theme.colors.yellow} data-cy="title">
           ✨<i>End To End Testing: <br />Less Bugs, Build Faster</i> ✨
-        </Heading>
-        <Heading margin="0px" fontSize="h3">
+        </Heading>       
+        <Heading margin="300px 0 0 0" color={theme.colors.blue} fontSize="h3">
           RBC Digital
         </Heading>
-      </FlexBox>
     </Slide>
     <Slide>
       <Heading>What is frontend e2e testing?</Heading>
@@ -84,14 +94,14 @@ function App() {
       </UnorderedList>
     </Slide>
     <Slide>
-      <FlexBox alignContent="center">
+      <FlexBox alignContent="center" flexDirection="column">
+        <Heading>What is frontend e2e testing?</Heading>
         <Image src={testPyramid}></Image>
-      </FlexBox>
-      <FlexBox>
-      <p>Credit: <a href="https://martinfowler.com/articles/practical-test-pyramid.html#TheTestPyramid">Martin Fowler</a></p>
+        <p>Credit: <a href="https://martinfowler.com/articles/practical-test-pyramid.html#TheTestPyramid">Martin Fowler</a></p>
       </FlexBox>
     </Slide>
     <Slide>
+      <Heading>What is frontend e2e testing?</Heading>
       <UnorderedList>
         <Appear>
           <ListItem>Takes a long time and requires a lot of maintenance</ListItem>
@@ -105,12 +115,11 @@ function App() {
       </UnorderedList>
     </Slide>
     <Slide>
-      <Heading>Who is using e2e testing in the tech world</Heading>
-      <OrderedList>
-        <Appear>
-          <ListItem>Picture of companies</ListItem>
-        </Appear>
-      </OrderedList>
+      <FlexBox alignContent="center" flexDirection="column">
+        <Heading fontSize="h3">Companies using e2e testing framework</Heading>
+        <Image height="500px" src={companies}></Image>
+        <p>Credits: cypress.io and playwright.dev</p>
+      </FlexBox>
     </Slide>
     <Slide>
       <Heading>Why e2e testing?</Heading>
@@ -191,7 +200,21 @@ function App() {
           <ListItem>End-to-end testing are executed on regular basis, but not recommended during feature developement</ListItem>
         </Appear>
         <Appear>
-          <ListItem>An ideal time to run end-to-end testing is during building a release version in your CI/CD pipeline</ListItem>
+          <ListItem>An ideal time to run end-to-end testing is during a Pull Request into the main branch or building a release version in your CI/CD pipeline</ListItem>
+        </Appear>
+      </UnorderedList>
+    </Slide>
+    <Slide>
+      <Heading>How to integrate into development process and when to run tests</Heading>
+      <UnorderedList>
+        <Appear>
+          <ListItem>Update and run the test scripts when new feature/flow changes are introduced</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>To cover integration testing of new features and regression testing as well</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Review testing result reports to ensure changes did not break the application. Archive them for audit purposes in the future</ListItem>
         </Appear>
       </UnorderedList>
     </Slide>
@@ -207,9 +230,20 @@ function App() {
     </Slide>
     <Slide>
         <Heading>Example of how to write Cypress script</Heading>
-        <p>Very similar to writing other test scripts.</p>
-        <p>You have can setup condition prior to running each test condition (before each)</p>
-        <p>Uses the `cy` object to perform actions and to test assertion</p>
+        <UnorderedList>
+        <Appear>
+          <ListItem>Very similar to writing other test scripts</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Run shared code before each test using before()</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Uses the `cy` object to perform actions and to test assertion</ListItem>
+        </Appear>
+      </UnorderedList>
+    </Slide>
+    <Slide>
+        <Heading>Example of how to write Cypress script</Heading>
         <CodePane language="javascript" showLineNumbers={false}>{`
         before(() => {
           cy.visit('http://localhost:3000/?slideIndex=0&stepIndex=0');
@@ -221,6 +255,45 @@ function App() {
         `}
         </CodePane>
     </Slide>
+    <Slide>
+        <Heading>Writing Cypress test scripts</Heading>
+        <UnorderedList>
+        <Appear>
+          <ListItem>Use data-cy attributes to provide context to your selectors and isolate them from CSS or JS changes</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>In Cypress, you almost never need to use cy.wait() for an arbitrary amount of time.</ListItem>
+        </Appear>
+      </UnorderedList>
+    </Slide>
+    <Slide>
+        <Heading>Writing Cypress test scripts</Heading>
+        <UnorderedList>
+        <Appear>
+          <ListItem>Use cy.intercept() to intercept and stub network requests</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>For local runs of Cypress, the network requests  should be stubbed so that the response is always consistent and the tests run faster</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>For critical paths and happy paths it would be useful to not stub the response and test the contract between client and server is working correctly</ListItem>
+        </Appear>
+      </UnorderedList>
+    </Slide>
+    <Slide>
+        <Heading>Writing Cypress test scripts</Heading>
+        <UnorderedList>
+        <Appear>
+          <ListItem>Cypress by default clicks on the center of the element. Might see some failures if the clickable area of the element in the DOM is not at the center</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>You can change that by changing the click event clicking position in those instances: https://docs.cypress.io/api/commands/click#Arguments</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>More best practices here: https://docs.cypress.io/guides/references/best-practices</ListItem>
+        </Appear>
+      </UnorderedList>
+    </Slide>
     <FlakyTests />
     <TipsFlakyTests />
     <TipsFlakyTestsContinued />
@@ -228,7 +301,6 @@ function App() {
       <Heading>Integration with pipeline Github Actions</Heading>
     </Slide>
     <Conclusions />
-    <ExampleTemplateSlides />
   </Deck>
   );
 }
