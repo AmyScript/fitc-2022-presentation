@@ -24,6 +24,7 @@ import React from 'react';
 import { TipsFlakyTestsContinued } from './slides/TipsFlakyTestsContinued';
 import { FlakyTests } from './slides/FlakyTests';
 import { Conclusions } from './slides/Conclusions';
+import { Demo } from './slides/Demo';
 
 const images = {
   backgroundImg: 'url(https://raw.githubusercontent.com/vincent-ksk/fitc/master/background.jpeg)',
@@ -38,7 +39,7 @@ console.log(images.backgroundImg);
 // SPECTACLE_CLI_THEME_START
 const theme = {
   colors: {
-    primary: '#fff',
+    primary: '#000',
     blue: '#00569B',
     yellow: '#f9c300'
   },
@@ -68,14 +69,11 @@ const template = () => (
 function App() {
   return (
 <Deck theme={theme} template={template}>
-    <Slide 
-      backgroundImage={images.backgroundImg2}       
-      backgroundSize="contain"
-      backgroundPosition="center center">
+    <Slide>
         <Heading margin="100px 0 0 0" color={theme.colors.yellow} data-cy="title">
           ✨<i>End To End Testing: <br />Less Bugs, Build Faster</i> ✨
         </Heading>       
-        <Heading margin="300px 0 0 0" color={theme.colors.blue} fontSize="h3">
+        <Heading margin="200px 0 0 0" color={theme.colors.blue} fontSize="h3">
           RBC Digital
         </Heading>
     </Slide>
@@ -86,10 +84,7 @@ function App() {
           <ListItem>Methodology of testing your application's workflow from start to finish using real-life scenarios</ListItem>
         </Appear>
         <Appear>
-          <ListItem>Ensure UI behaves as per requirement and test against actual back-end service</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>Recommend only to test the high-value scenarios</ListItem>
+          <ListItem>Ensure UI behaves as per requirement and test against actual/mocked back-end services</ListItem>
         </Appear>
       </UnorderedList>
     </Slide>
@@ -171,30 +166,10 @@ function App() {
       </Notes>
     </Slide>
     <Slide>
-      <Heading>Why should you use frontend e2e testing (if no dedicated QE team)</Heading>
-      <CodePane language="jsx">{`
-        import { createClient, Provider } from 'urql';
-        const client = createClient({ url: 'https://0ufyz.sse.codesandbox.io' });
-        const App = () => (
-          <Provider value={client}>
-            <Todos />
-          </Provider>
-        );
-        `}</CodePane>
-      <Box height={20} />
-      <CodePane language="java" showLineNumbers={false}>{`
-        public class NoLineNumbers {
-          public static void main(String[] args) {
-            System.out.println("Hello");
-          }
-        }
-        `}</CodePane>
-    </Slide>
-    <Slide>
       <Heading>How to integrate into development process and when to run tests</Heading>
       <UnorderedList>
         <Appear>
-          <ListItem>Typically unit and integration tests are executed during push pre-hooks and feature Pull Requests</ListItem>
+          <ListItem>Typically unit and integration tests are executed during push pre-hooks in feature Pull Requests</ListItem>
         </Appear>
         <Appear>
           <ListItem>End-to-end testing are executed on regular basis, but not recommended during feature developement</ListItem>
@@ -213,23 +188,15 @@ function App() {
         <Appear>
           <ListItem>To cover integration testing of new features and regression testing as well</ListItem>
         </Appear>
+        //Add item about testing locally 
         <Appear>
           <ListItem>Review testing result reports to ensure changes did not break the application. Archive them for audit purposes in the future</ListItem>
         </Appear>
       </UnorderedList>
     </Slide>
-    <Slide>
-      <Heading>What kind of coverage for best practice</Heading>
-    </Slide>
     <Demo />
     <Slide>
-      <Heading>Cypress example</Heading>
-    </Slide>
-    <Slide>
-      <Heading>Add new feature and test fails</Heading>
-    </Slide>
-    <Slide>
-        <Heading>Example of how to write Cypress script</Heading>
+        <Heading>Examples of how to write Cypress script</Heading>
         <UnorderedList>
         <Appear>
           <ListItem>Very similar to writing other test scripts</ListItem>
@@ -243,7 +210,7 @@ function App() {
       </UnorderedList>
     </Slide>
     <Slide>
-        <Heading>Example of how to write Cypress script</Heading>
+        <Heading>Examples of how to write Cypress script</Heading>
         <CodePane language="javascript" showLineNumbers={false}>{`
         before(() => {
           cy.visit('http://localhost:3000/?slideIndex=0&stepIndex=0');
@@ -259,8 +226,9 @@ function App() {
         <Heading>Writing Cypress test scripts</Heading>
         <UnorderedList>
         <Appear>
-          <ListItem>Use data-cy attributes to provide context to your selectors and isolate them from CSS or JS changes</ListItem>
+          <ListItem>Use data-cy attributes to provide context to your selectors and isolate them from CSS/JS/HTML changes</ListItem>
         </Appear>
+        // Add cy.wait() info
         <Appear>
           <ListItem>In Cypress, you almost never need to use cy.wait() for an arbitrary amount of time.</ListItem>
         </Appear>
@@ -276,7 +244,8 @@ function App() {
           <ListItem>For local runs of Cypress, the network requests  should be stubbed so that the response is always consistent and the tests run faster</ListItem>
         </Appear>
         <Appear>
-          <ListItem>For critical paths and happy paths it would be useful to not stub the response and test the contract between client and server is working correctly</ListItem>
+          <ListItem>// Run this separately from your pipeline
+            For critical paths and happy paths it would be useful to not stub the response and test the contract between client and server is working correctly</ListItem>
         </Appear>
       </UnorderedList>
     </Slide>
