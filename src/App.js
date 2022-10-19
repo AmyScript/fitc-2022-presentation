@@ -172,10 +172,7 @@ function App() {
           <ListItem>Typically unit and integration tests are executed during push pre-hooks in feature Pull Requests</ListItem>
         </Appear>
         <Appear>
-          <ListItem>End-to-end testing are executed on regular basis, but not recommended during feature developement</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>An ideal time to run end-to-end testing is during a Pull Request into the main branch or building a release version in your CI/CD pipeline</ListItem>
+          <ListItem>End-to-end testing are executed on regular basis, but not recommended to have too many test cases</ListItem>
         </Appear>
       </UnorderedList>
     </Slide>
@@ -188,7 +185,9 @@ function App() {
         <Appear>
           <ListItem>To cover integration testing of new features and regression testing as well</ListItem>
         </Appear>
-        //Add item about testing locally 
+        <Appear>
+          <ListItem>Test locally and use the framework watch functionality if it supports it</ListItem>
+        </Appear>
         <Appear>
           <ListItem>Review testing result reports to ensure changes did not break the application. Archive them for audit purposes in the future</ListItem>
         </Appear>
@@ -241,10 +240,10 @@ function App() {
           <ListItem>Use cy.intercept() to intercept and stub network requests</ListItem>
         </Appear>
         <Appear>
-          <ListItem>For local runs of Cypress, the network requests  should be stubbed so that the response is always consistent and the tests run faster</ListItem>
+          <ListItem>For local runs of Cypress, the network requests should be stubbed so that the response is always consistent and the tests run faster</ListItem>
         </Appear>
         <Appear>
-          <ListItem>// Run this separately from your pipeline
+          <ListItem>
             For critical paths and happy paths it would be useful to not stub the response and test the contract between client and server is working correctly</ListItem>
         </Appear>
       </UnorderedList>
