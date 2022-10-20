@@ -39,7 +39,7 @@ console.log(images.backgroundImg);
 // SPECTACLE_CLI_THEME_START
 const theme = {
   colors: {
-    primary: '#000',
+    primary: '#fff',
     blue: '#00569B',
     yellow: '#f9c300'
   },
@@ -169,7 +169,7 @@ function App() {
       <Heading>How to integrate into development process and when to run tests</Heading>
       <UnorderedList>
         <Appear>
-          <ListItem>Typically unit and integration tests are executed during push pre-hooks in feature Pull Requests</ListItem>
+          <ListItem>Typically unit and integration tests are executed during pre-hooks in feature Pull Requests</ListItem>
         </Appear>
         <Appear>
           <ListItem>End-to-end testing are executed on regular basis, but not recommended to have too many test cases</ListItem>
@@ -188,8 +188,16 @@ function App() {
         <Appear>
           <ListItem>Test locally and use the framework watch functionality if it supports it</ListItem>
         </Appear>
+      </UnorderedList>
+    </Slide>
+    <Slide>
+      <Heading>How to integrate into development process and when to run tests</Heading>
+      <UnorderedList>
         <Appear>
-          <ListItem>Review testing result reports to ensure changes did not break the application. Archive them for audit purposes in the future</ListItem>
+          <ListItem>Review testing result reports to ensure changes did not break the application</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Archive release builds' e2e reports for audit purposes in the future</ListItem>
         </Appear>
       </UnorderedList>
     </Slide>
@@ -227,7 +235,9 @@ function App() {
         <Appear>
           <ListItem>Use data-cy attributes to provide context to your selectors and isolate them from CSS/JS/HTML changes</ListItem>
         </Appear>
-        // Add cy.wait() info
+        <Appear>
+          <ListItem>cy.wait() to wait some miliseconds before performing the next action</ListItem>
+        </Appear>
         <Appear>
           <ListItem>In Cypress, you almost never need to use cy.wait() for an arbitrary amount of time.</ListItem>
         </Appear>
