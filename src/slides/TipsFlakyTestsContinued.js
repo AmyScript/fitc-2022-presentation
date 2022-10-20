@@ -10,7 +10,7 @@ import {
 export const TipsFlakyTestsContinued = () => {
     return(
     <Slide>
-      <Heading>Tips for flaky tests</Heading>
+      <Heading>Tips for preventing flaky tests</Heading>
       <UnorderedList>
         <Appear>
           <ListItem>Make sure the application has the network response if the network response affects the rendering of the element</ListItem>
@@ -19,7 +19,10 @@ export const TipsFlakyTestsContinued = () => {
           <ListItem>Utilize wait time(not recommended)</ListItem>
         </Appear>
         <Appear>
-          <ListItem>Utilize retry commands and intercept network requests to make sure the response is sucessful </ListItem>
+          <ListItem>Utilize retry commands </ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Intercept network requests to make sure the response is successful </ListItem>
         </Appear>
         <Appear>
           <ListItem>Cypress test retries - <a href="https://docs.cypress.io/guides/core-concepts/retry-ability">https://docs.cypress.io/guides/core-concepts/retry-ability</a> </ListItem>

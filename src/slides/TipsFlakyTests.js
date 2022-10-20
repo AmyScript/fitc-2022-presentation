@@ -10,7 +10,7 @@ import {
 export const TipsFlakyTests = () => {
     return(
       <Slide>
-        <Heading>Tips for flaky tests</Heading>
+        <Heading>Tips for preventing flaky tests</Heading>
         <UnorderedList>
           <Appear>
             <ListItem>Only make assertion on text if it is crucial to your application</ListItem>
