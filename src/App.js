@@ -14,6 +14,7 @@ import {
   Image,
   Notes,
   CodePane,
+  Link
 } from 'spectacle';
 
 import testPyramid from '../src/images/test-pyramid.png';
@@ -22,6 +23,7 @@ import companies from '../src/images/companies-01.png';
 import { TipsFlakyTests } from './slides/TipsFlakyTests';
 import React from 'react';
 import { TipsFlakyTestsContinued } from './slides/TipsFlakyTestsContinued';
+import { TipsFlakyTestsFinal } from './slides/TipsFlakyTestsFinal';
 import { FlakyTests } from './slides/FlakyTests';
 import { Conclusions } from './slides/Conclusions';
 import { Demo } from './slides/Demo';
@@ -35,13 +37,15 @@ const images = {
   backgroundImg6: 'url(https://raw.githubusercontent.com/vincent-ksk/fitc/master/background-6.png)'
 };
 
-console.log(images.backgroundImg);
 // SPECTACLE_CLI_THEME_START
 const theme = {
   colors: {
-    primary: '#fff',
+    primary: '#000',
     blue: '#00569B',
-    yellow: '#f9c300'
+    yellow: '#f9c300',
+    secondary: '#00569B',
+    tertiary: '#fff',
+    quaternary: '#00569B'
   },
   fonts: {
     header: '"Open Sans Condensed", Helvetica, Arial, sans-serif',
@@ -70,7 +74,7 @@ function App() {
   return (
 <Deck theme={theme} template={template}>
     <Slide>
-        <Heading margin="100px 0 0 0" color={theme.colors.yellow} data-cy="title">
+        <Heading margin="100px 0 0 0" color={theme.colors.blue} data-cy="title">
           ✨<i>End To End Testing: <br />Less Bugs, Build Faster</i> ✨
         </Heading>       
         <Heading margin="200px 0 0 0" color={theme.colors.blue} fontSize="h3">
@@ -91,8 +95,8 @@ function App() {
     <Slide>
       <FlexBox alignContent="center" flexDirection="column">
         <Heading>What is frontend e2e testing?</Heading>
-        <Image src={testPyramid}></Image>
-        <p>Credit: <a href="https://martinfowler.com/articles/practical-test-pyramid.html#TheTestPyramid">Martin Fowler</a></p>
+        <Image height="450px" src={testPyramid}></Image>
+        <p>Credit: <Link fontSize="18px" href="https://martinfowler.com/articles/practical-test-pyramid.html#TheTestPyramid">Martin Fowler</Link></p>
       </FlexBox>
     </Slide>
     <Slide>
@@ -143,7 +147,7 @@ function App() {
       <Heading>Usage of JS Testing Frameworks and Libraries Survey</Heading>
       <FlexBox flexDirection="column" alignContent="center">
         <Text>Based on 16,085 responses</Text>
-        <Text>Credit: <a href="https://2021.stateofjs.com/en-US/libraries/testing">State of JS Survey - Sacha Greif</a></Text>
+        <Text>Credit: <Link href="https://2021.stateofjs.com/en-US/libraries/testing">State of JS Survey - Sacha Greif</Link></Text>
       </FlexBox>
       <Notes>
         There are different e2e testing frameworks and libraries out there.  A really popular one amongst the software
@@ -180,10 +184,10 @@ function App() {
       <Heading>How to integrate into development process and when to run tests</Heading>
       <UnorderedList>
         <Appear>
-          <ListItem>Update and run the test scripts when new feature/flow changes are introduced</ListItem>
+          <ListItem>Update and run the test scripts when new high value feature/flow changes are introduced</ListItem>
         </Appear>
         <Appear>
-          <ListItem>To cover integration testing of new features and regression testing as well</ListItem>
+          <ListItem>To cover testing of new features and regression testing as well</ListItem>
         </Appear>
         <Appear>
           <ListItem>Test locally and use the framework watch functionality if it supports it</ListItem>
@@ -275,9 +279,7 @@ function App() {
     <FlakyTests />
     <TipsFlakyTests />
     <TipsFlakyTestsContinued />
-    <Slide>
-      <Heading>Integration with pipeline Github Actions</Heading>
-    </Slide>
+    <TipsFlakyTestsFinal />
     <Conclusions />
   </Deck>
   );
