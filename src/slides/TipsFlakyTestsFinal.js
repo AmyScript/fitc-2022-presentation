@@ -4,25 +4,20 @@ import {
   Appear,
   Slide,
   Notes,
-  ListItem
+  ListItem,
+  Link
 } from 'spectacle';
 
-export const TipsFlakyTestsContinued = () => {
+export const TipsFlakyTestsFinal = () => {
     return(
     <Slide>
       <Heading>Tips for preventing flaky tests</Heading>
       <UnorderedList>
         <Appear>
-          <ListItem>Make sure the application has the network response if the network response affects the rendering of the element</ListItem>
+          <ListItem>Cypress test retries - <Link href="https://docs.cypress.io/guides/core-concepts/retry-ability">https://docs.cypress.io/guides/core-concepts/retry-ability</Link> </ListItem>
         </Appear>
         <Appear>
-          <ListItem>Utilize wait time(not recommended)</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>Utilize retry commands </ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>Intercept network requests to make sure the response is successful </ListItem>
+          <ListItem>Share and document learnings with the team to avoid similar flake in the future</ListItem>
         </Appear>
       </UnorderedList>
       <Notes>
