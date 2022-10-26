@@ -76,7 +76,7 @@ function App() {
     <Slide>
         <Heading margin="100px 0 0 0" color={theme.colors.blue} data-cy="title">
           ✨<i>End To End Testing: <br />Less Bugs, Build Faster</i> ✨
-        </Heading>       
+        </Heading>
         <Heading margin="200px 0 0 0" color={theme.colors.blue} fontSize="h3">
           RBC Digital
         </Heading>
@@ -142,6 +142,14 @@ function App() {
           <ListItem>Audit record for critical flows 🔍</ListItem>
         </Appear>
     </UnorderedList>
+    <Notes>
+      As more developers and teams work on the code base, it's easy to introduce regression bugs. e2e testing can help with catching regression bugs <br />
+      Automated e2e testing can be part of your continuous integration pipeline such as Github Actions so that you know the flows in your application covered by e2e testing will not be broken before merging new code to production <br/>
+      Instead of manually testing for regression errors, automated e2e testing can safe developers time by catching any regression errors and allowing the developer address them faster <br />
+      There are certain things that unit and integration tests can't cover. One use case would be e2e testing of navigation between pages <br />
+      The customer experience also improves by introducing less bugs into production <br />
+      Your application maybe for a regulated industry and so the e2e test reports can be saved as audit records that testing has been done and has passed before code gets pushed out to production <br />
+    </Notes>
     </Slide>
     <Slide>
       <Heading>Usage of JS Testing Frameworks and Libraries Survey</Heading>
@@ -152,7 +160,8 @@ function App() {
       <Notes>
         There are different e2e testing frameworks and libraries out there.  A really popular one amongst the software
         testing community is Selenium Webdriver as you can write the tests in different languages like Java, Python, C# and even JS but I'm
-        going to focus on the increasingly popular ones for doing e2e tests in JS in modern web applications in the frontend community.
+        going to focus on the increasingly popular ones for doing e2e tests in JS for modern web applications in the frontend community as tests written in
+        JS will be easier for Frontend developers to adopt since most are already familiar with JS.
         I'm going to show everyone the 2021 survey results on the usage of JS testing frameworks and libraries conducted
         by the site State of JS.
       </Notes>
@@ -163,10 +172,10 @@ function App() {
       </FlexBox>
       <Notes>
         Any JS testing framework that has less than 10% awareness from the survey respondents were not included here.
+        There are other e2e testing frameworks and libraries such as Selenium, TestCafe, Protractor etc. that didn't make it on this chart
         Usage of JS e2e testing has been steadly increasing since 2019.
         Usage of JS e2e testing frameworks mostly started out in 2019 with the usage of Puppeteer and Cypress and continues to gain usage in the following years.
-        With more usage of other testing libraries such as Webdriver IO and Playwright.
-        There are other e2e testing frameworks and libraries such as Selenium, TestCafe, Protractor etc. that didn't make it on this chart
+        With more usage of other testing libraries such as Webdriver IO and Playwright recently.
       </Notes>
     </Slide>
     <Slide>
