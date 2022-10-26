@@ -75,9 +75,9 @@ function App() {
 <Deck theme={theme} template={template}>
     <Slide
       backgroundImage={images.backgroundImg4}
-      backgroundOpacity="0.3"
+      backgroundOpacity="0.5"
       backgroundColor='#000'>
-        <Heading margin="220px 0 0 0" color={theme.colors.yellow} data-cy="title">
+        <Heading margin="200px 0 0 0" color={theme.colors.yellow} data-cy="title">
           ✨<i>End To End Testing: <br />Less Bugs, Build Faster</i> ✨
         </Heading>
         <Heading margin="180px 0 0 0" color={theme.colors.blue} fontSize="h3">
@@ -248,6 +248,9 @@ function App() {
     <Slide>
         <Heading>Cypress Scripts Best Practices</Heading>
         <UnorderedList>
+        <Appear>
+            <ListItem>Only make assertion on text if it is crucial to your application</ListItem>
+        </Appear>
         <Appear>
           <ListItem>Use data-cy attributes to provide context to your selectors and isolate them from CSS/JS/HTML changes</ListItem>
         </Appear>
