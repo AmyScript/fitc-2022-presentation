@@ -21,14 +21,8 @@ export const TipsFlakyTestsFinal = () => {
         </Appear>
       </UnorderedList>
       <Notes>
-          Most test runners will allow you to use a wait command to wait a certain number of seconds before making
-          assertions. However, this is not recommended because you may not know how long a page takes to load or how long
-          a calculation will take and may add unnecessary waiting time or not have enough waiting time depending on the machine
-          where your tests are ran. <br />
-          Look for a test runner that can auto retry certain commands.  For example, with Cypress, the .get() command is automatially
-          retried for x number of seconds, default to 4 seconds.  You can also use a call back function with the .should() command
-          where assertions within the callback is retried over and over again until it passes.  This is good for making
-          assertions on dynamically generated DOM elements.
+          If you want to understand more details of the Cypress test retry capabilities, check out their guide <br />
+          And lastly, share and document learnings with the team to avoid similar flake in the future.  There are different scenarios that causes flaky tests and it is worthwhile to share how to solve these issues with others so you are not re-inventing the wheel.
       </Notes>
     </Slide>
     );
