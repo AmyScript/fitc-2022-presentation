@@ -29,12 +29,12 @@ import { Conclusions } from './slides/Conclusions';
 import { Demo } from './slides/Demo';
 
 const images = {
-  backgroundImg: 'url(https://raw.githubusercontent.com/vincent-ksk/fitc/master/background.jpeg)',
-  backgroundImg2: 'url(https://raw.githubusercontent.com/vincent-ksk/fitc/master/background-2.png)',
-  backgroundImg3: 'url(https://raw.githubusercontent.com/vincent-ksk/fitc/master/background-3.png)',
-  backgroundImg4: 'url(https://raw.githubusercontent.com/vincent-ksk/fitc/master/background-4.png)',
-  backgroundImg5: 'url(https://raw.githubusercontent.com/vincent-ksk/fitc/master/background-5.png)',
-  backgroundImg6: 'url(https://raw.githubusercontent.com/vincent-ksk/fitc/master/background-6.png)'
+  backgroundImg1: 'url(https://raw.githubusercontent.com/AmyScript/fitc-2022-presentation/main/public/images/background-01.jpg)',
+  backgroundImg2: 'url(https://raw.githubusercontent.com/AmyScript/fitc-2022-presentation/main/public/images/background-02.jpg)',
+  backgroundImg3: 'url(https://raw.githubusercontent.com/AmyScript/fitc-2022-presentation/main/public/images/background-03.jpg)',
+  backgroundImg4: 'url(https://raw.githubusercontent.com/AmyScript/fitc-2022-presentation/main/public/images/background-04.jpg)',
+  backgroundImg5: 'url(https://raw.githubusercontent.com/AmyScript/fitc-2022-presentation/main/public/images/background-05.jpg)',
+  backgroundImg6: 'url(https://raw.githubusercontent.com/AmyScript/fitc-2022-presentation/main/public/images/background-06.jpg)'
 };
 
 // SPECTACLE_CLI_THEME_START
@@ -73,8 +73,11 @@ const template = () => (
 function App() {
   return (
 <Deck theme={theme} template={template}>
-    <Slide>
-        <Heading margin="100px 0 0 0" color={theme.colors.blue} data-cy="title">
+    <Slide 
+      backgroundImage={images.backgroundImg1} 
+      backgroundOpacity="0.5"
+      backgroundColor='#000'>
+        <Heading margin="100px 0 0 0" color={theme.colors.yellow} data-cy="title">
           ✨<i>End To End Testing: <br />Less Bugs, Build Faster</i> ✨
         </Heading>       
         <Heading margin="200px 0 0 0" color={theme.colors.blue} fontSize="h3">
