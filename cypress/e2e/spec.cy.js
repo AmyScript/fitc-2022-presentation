@@ -3,10 +3,6 @@ describe('Presentation Title', () => {
     cy.visit('http://localhost:3000/?slideIndex=0&stepIndex=0');
   });
 
-  it('has the correct intro title', () => {
-    cy.get('[data-cy="title"]').contains("End To End Testing");
-  });
-
   it('has all 23 slides', () => {
     cy.get('div[data-testid="animated-progress-circle"]').should('have.length', 23);
   });

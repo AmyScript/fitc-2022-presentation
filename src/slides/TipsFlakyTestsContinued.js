@@ -32,7 +32,8 @@ export const TipsFlakyTestsContinued = () => {
           a calculation will take and may add unnecessary waiting time or not have enough waiting time depending on the machine
           where your tests are ran. <br />
           Look for a test runner that can auto retry certain commands.  For example, with Cypress, the .get() command to get elements is automatially
-          retried for x number of seconds, default to 4 seconds.  In our demo, Cypress was able to get the Milo image even though there was a 2 second delay in rendering the image.
+          retried for x number of seconds, default to 4 seconds.  In our demo, Cypress was able to get the Milo image even though there was a 2 second delay in rendering the image. <br />
+          Intercept network requests to make sure the response is successful
       </Notes>
     </Slide>
     );

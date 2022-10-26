@@ -106,10 +106,10 @@ function App() {
       <Heading>What is frontend e2e testing?</Heading>
       <UnorderedList>
         <Appear>
-          <ListItem>Takes a long time and requires a lot of maintenance</ListItem>
+          <ListItem>Takes time and requires maintenance</ListItem>
         </Appear>
         <Appear>
-          <ListItem>The larger the application, more effort to required to make the tests work</ListItem>
+          <ListItem>The larger the application, more critical/happy paths to test against</ListItem>
         </Appear>
         <Appear>
           <ListItem>Recommend only to test the high-value scenarios</ListItem>
@@ -196,7 +196,7 @@ function App() {
       <Heading>How to integrate into development process and when to run tests</Heading>
       <UnorderedList>
         <Appear>
-          <ListItem>Update and run the test scripts when new high value feature/flow changes are introduced</ListItem>
+          <ListItem>Update and run the test scripts when new critical changes are introduced</ListItem>
         </Appear>
         <Appear>
           <ListItem>To cover testing of new features and regression testing as well</ListItem>
