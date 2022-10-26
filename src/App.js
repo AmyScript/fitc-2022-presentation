@@ -216,7 +216,7 @@ function App() {
     </Slide>
     <Demo />
     <Slide>
-        <Heading>Examples of how to write Cypress script</Heading>
+        <Heading>Cypress Scripts Best Practices</Heading>
         <UnorderedList>
         <Appear>
           <ListItem>Very similar to writing other test scripts</ListItem>
@@ -230,7 +230,7 @@ function App() {
       </UnorderedList>
     </Slide>
     <Slide>
-        <Heading>Examples of how to write Cypress script</Heading>
+        <Heading>Cypress Scripts Best Practices</Heading>
         <CodePane language="javascript" showLineNumbers={false}>{`
         before(() => {
           cy.visit('http://localhost:3000/?slideIndex=0&stepIndex=0');
@@ -243,7 +243,7 @@ function App() {
         </CodePane>
     </Slide>
     <Slide>
-        <Heading>Writing Cypress test scripts</Heading>
+        <Heading>Cypress Scripts Best Practices</Heading>
         <UnorderedList>
         <Appear>
           <ListItem>Use data-cy attributes to provide context to your selectors and isolate them from CSS/JS/HTML changes</ListItem>
@@ -257,7 +257,7 @@ function App() {
       </UnorderedList>
     </Slide>
     <Slide>
-        <Heading>Writing Cypress test scripts</Heading>
+        <Heading>Cypress Scripts Best Practices</Heading>
         <UnorderedList>
         <Appear>
           <ListItem>Use cy.intercept() to intercept and stub network requests</ListItem>
@@ -272,7 +272,7 @@ function App() {
       </UnorderedList>
     </Slide>
     <Slide>
-        <Heading>Writing Cypress test scripts</Heading>
+        <Heading>Cypress Scripts Best Practices</Heading>
         <UnorderedList>
         <Appear>
           <ListItem>Cypress by default clicks on the center of the element. Might see some failures if the clickable area of the element in the DOM is not at the center</ListItem>
