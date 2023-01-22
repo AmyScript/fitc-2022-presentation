@@ -80,9 +80,6 @@ function App() {
         <Heading margin="200px 0 0 0" color={theme.colors.yellow} data-cy="title">
           ✨<i>End To End Testing: <br />Less Bugs, Build Faster</i> ✨
         </Heading>
-        <Heading margin="180px 0 0 0" color={theme.colors.blue} fontSize="h3">
-          RBC Digital
-        </Heading>
     </Slide>
     <Slide>
       <Heading>What is frontend e2e testing?</Heading>
